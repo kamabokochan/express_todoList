@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 express 練習
+  ul.todolists
+    -var hoge = todoList
+    each item, index in hoge
+      li
+        span= item.title
+        form(action="/posts/deleate", method="post")
+          input(type="submit", value="削除")
+          input(type="hidden", name="index", value=index)
+  form(action="/posts/create", method="post")
+    input(type="text", name="text")
+    input(type="submit", value="追加")
